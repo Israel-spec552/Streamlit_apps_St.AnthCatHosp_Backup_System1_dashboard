@@ -1,4 +1,5 @@
-CREATE TABLE users (
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE,
     password TEXT,
@@ -6,24 +7,24 @@ CREATE TABLE users (
     department_id INTEGER
 );
 
-
-CREATE TABLE departments (
+-- Departments table
+CREATE TABLE IF NOT EXISTS departments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE
 );
 
-
-CREATE TABLE files (
+-- Files table
+CREATE TABLE IF NOT EXISTS files (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     filename TEXT,
-    content LONGBLOB,
+    content BLOB,
     uploaded_by INTEGER,
     department_id INTEGER,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-
-CREATE TABLE audit_log (
+-- Audit log table
+CREATE TABLE IF NOT EXISTS audit_log (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
     action TEXT,
