@@ -1,5 +1,4 @@
-
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE,
     password TEXT,
@@ -8,13 +7,13 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 
-CREATE TABLE IF NOT EXISTS departments (
+CREATE TABLE departments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE
 );
 
 
-CREATE TABLE IF NOT EXISTS files (
+CREATE TABLE files (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     filename TEXT,
     content LONGBLOB,
@@ -24,7 +23,7 @@ CREATE TABLE IF NOT EXISTS files (
 );
 
 
-CREATE TABLE IF NOT EXISTS audit_log (
+CREATE TABLE audit_log (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
     action TEXT,
