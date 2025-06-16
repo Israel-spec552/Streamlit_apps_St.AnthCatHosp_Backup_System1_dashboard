@@ -1,9 +1,10 @@
-import streamlit as st
+from db import init_db
 from auth import login, logout, get_current_user
 from views import dashboard, manage_users, manage_departments, file_upload, audit_log, export_data
-from db import init_db  # ✅ Import the DB initializer
 
-# ✅ Initialize the database tables before anything else
+import streamlit as st
+
+# Initialize database
 init_db()
 
 st.set_page_config(page_title="Department File Backup System", layout="wide")
@@ -29,4 +30,4 @@ if user:
     elif menu == "Logout":
         logout()
 else:
-    login()
+    login()  # ⬅️ Ensure this is being called when no user is logged in
