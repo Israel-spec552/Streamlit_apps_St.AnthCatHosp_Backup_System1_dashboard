@@ -15,16 +15,12 @@ init_db()
 
 st.set_page_config(page_title="Department File Backup System", layout="wide")
 
-# Get user session
-user = get_current_user()
-
 def render_sidebar(user):
     st.sidebar.title(f"Welcome, {user['username']} ({user['role']})")
     menu_options = ["Dashboard", "Upload File"]
 
     if user["role"] == "chief_admin":
         menu_options += ["Manage Users", "Manage Departments", "Audit Log", "Export Data"]
-
     elif user["role"] == "department_admin":
         menu_options += ["Manage Users", "Audit Log"]
 
@@ -32,8 +28,10 @@ def render_sidebar(user):
     return st.sidebar.radio("Go to", menu_options)
 
 def main():
+    user = get_current_user()  # ✅ Get the user dynamically inside main()
+
     if not user:
-        login()  # Display login form if no user
+        login()  # Show login form
         return
 
     # Sidebar and navigation
