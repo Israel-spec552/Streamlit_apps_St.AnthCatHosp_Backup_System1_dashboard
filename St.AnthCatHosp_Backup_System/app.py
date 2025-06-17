@@ -1,5 +1,6 @@
 import streamlit as st
 from db import init_db
+from db import create_default_admin
 from auth import login, logout, get_current_user
 from views import (
     dashboard,
@@ -12,6 +13,7 @@ from views import (
 
 # Initialize database
 init_db()
+create_default_admin()
 
 st.set_page_config(page_title="Department File Backup System", layout="wide")
 
